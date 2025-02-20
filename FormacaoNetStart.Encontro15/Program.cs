@@ -8,15 +8,21 @@ using System.Linq;
 var repositorio = new RepositorioVeiculos();
 var veiculos = repositorio.ListarTodos();
 
-Console.WriteLine("*************** COM O MÉTODO ******************");
-ImprimirLista(veiculos);
-Console.WriteLine("***********************************************");
-Console.WriteLine();
+//static void ImprimirLista(IEnumerable<object> registros)
+//{
+//    if (registros.Any())
+//    {
+//        foreach (var obj in registros)
+//            Console.WriteLine(obj);
+//    }
+//    else
+//    {
+//        Console.WriteLine("lista vazia!");
+//    }
+//}
 
-Console.WriteLine("*************** COM O ForEach *****************");
-veiculos.ForEach(Console.WriteLine);
-Console.WriteLine("***********************************************");
-Console.WriteLine();
+//ImprimirLista(veiculos);
+//veiculos.ForEach(Console.WriteLine);
 
 #region Retornando múltiplos registros
 
@@ -28,6 +34,7 @@ var veiculosDe50rsA70rs = veiculos.Where(v => v.Valor >= 50_000 && v.Valor <= 70
 
 #region Notação de SQL
 
+/*
 //Notação de SQL
 var veiculosDe50rsA70rsSQL = from v in veiculos
                               where 
@@ -51,6 +58,8 @@ var veiculosDe50rsA70rsSQL3 = from v in veiculos
                                 v.Valor <= 70_000 &&
                                 v.Marca == "Toyota"
                               select new VeiculoDTO { Marca = v.Marca, Modelo = v.Modelo };
+
+*/
 
 #endregion
 
@@ -165,40 +174,56 @@ var quantidadeToyota = veiculos.Count(v => v.Marca == "Toyota");
 
 #region Agrupamento
 
-Console.WriteLine("*************** Agrupamento *******************");
+//Console.WriteLine("*************** Agrupamento ****************************");
 
-var veiculosPorMarca = veiculos.GroupBy(v => v.Marca);
+//var veiculosPorMarca = veiculos.GroupBy(v => v.Marca);
 
-foreach(var marca in veiculosPorMarca)
-{
-    Console.WriteLine(marca.Key);
+//foreach(var marca in veiculosPorMarca)
+//{
+//    Console.WriteLine(marca.Key);
 
-    foreach(var veiculo in marca)
-    {
-        Console.WriteLine(veiculo);
-    }
+//    foreach(var veiculo in marca)
+//    {
+//        Console.WriteLine(veiculo);
+//    }
 
-    Console.WriteLine("Valor total: " + marca.Sum(v => v.Valor).ToString("#,##0.00"));
-    Console.WriteLine();
-}
+//    Console.WriteLine("Valor total: " + marca.Sum(v => v.Valor).ToString("#,##0.00"));
+//    Console.WriteLine();
+//}
 
-Console.WriteLine("***********************************************");
+//Console.WriteLine("********************************************************");
 
 #endregion
 
 
+#region Resolução de exercícios propostos
 
 
-static void ImprimirLista(IEnumerable<object> registros)
-{
-    if (registros.Any())
-    {
-        foreach (var obj in registros)
-            Console.WriteLine(obj);
-    }
-    else
-    {
-        Console.WriteLine("lista vazia!");
-    }
-}
+//b)
+//var v = repositorio.BuscarPorPlaca("FOR-7733");
+//var v2 = repositorio.BuscarPorPlaca("FOR");
+
+//c)
+//repositorio.Adicionar(new Veiculo { Marca = "Honda", Modelo = "New Civic", Quilometragem = 15_000, Valor = 23_000, Placa = "for-1234" });
+//veiculos = repositorio.ListarTodos();
+//veiculos.ForEach(Console.WriteLine);
+
+
+//d)
+//repositorio.BuscarPorMarcaEModelo("Honda","").ForEach(Console.WriteLine);
+
+//e)
+//Console.WriteLine(repositorio.ValorTotalEstoque);
+
+//f)
+//repositorio.ListarTodos("marca")
+//           .ToList()
+//           .ForEach(Console.WriteLine);
+
+repositorio.ListarTodos()
+           .ToList()
+           .ForEach(Console.WriteLine);
+
+
+#endregion
 

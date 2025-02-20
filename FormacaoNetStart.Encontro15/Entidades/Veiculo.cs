@@ -7,8 +7,9 @@
         public required string Modelo { get; set; }
         public decimal Valor { get; set; }
         public int Quilometragem { get; set; }
+        public required string Placa { get; set; }
 
         public override string ToString()
-            => $"{Id:00} {Marca.PadRight(10)} {Modelo.PadRight(10)} {Quilometragem.ToString("#,##").PadLeft(7)} km{Valor.ToString("#,##0.00").PadLeft(12)}";
+            => $"{Id:00} {Marca.PadRight(10)} {Modelo.PadRight(10)} {Quilometragem.ToString("#,##").PadLeft(7)} km{Valor.ToString("#,##0.00").PadLeft(12)} {Placa.PadRight(10)}";
     }
 }
