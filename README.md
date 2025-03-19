@@ -20,5 +20,5 @@ A mentoria inclui:
 - Acompanhamento de projetos com atenção individualizada durante os encontros
 
 ## Aulas
-
+06 - Algoritmos de Busca
 15 - LINQ
